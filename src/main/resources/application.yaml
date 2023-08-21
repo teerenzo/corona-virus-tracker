@@ -2,8 +2,17 @@ server:
   port: 3000
 
 spring:
+    thymeleaf:
+        cache: false
+        prefix: classpath:/templates/
+        suffix: .html
+        mode: HTML
+
+    application:
+        name: CoronaVirusTracker
+
     datasource:
-        url: jdbc:mysql://localhost:3306/employee?useSSL=false
+        url: jdbc:mysql://localhost:3306/cvt?useSSL=false
         username: root
         password: 
         driver-class-name: com.mysql.jdbc.Driver
@@ -16,7 +25,11 @@ spring:
                 format_sql: true    
         show-sql: true
 
-
+logging:
+    level:
+       org.springframework.web: DEBUG
+       org.springframework.web.servlet: DEBUG
+       org.thymeleaf: DEBUG
 
             
 

@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -27,6 +29,10 @@ public class Patient {
     private String status;
     private String phoneNumber;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
      // Default constructor
      public Patient() {
         // Empty constructor required by JPA
@@ -42,6 +48,10 @@ public class Patient {
 
     public String getName() {
         return name;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public int getCases() {
@@ -62,6 +72,10 @@ public class Patient {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phone) {
+        this.phoneNumber = phone;
     }
 
     public void setName(String name) {

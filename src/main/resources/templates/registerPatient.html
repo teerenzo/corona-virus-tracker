@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Item List</title>
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <nav class="border-gray-200 bg-gray-800 dark:border-gray-700">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a th:href="@{/patients}" class="flex items-center">
+             
+              <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">Corona virus Tracker</span>
+          </a>
+          <button data-collapse-toggle="navbar-solid-bg" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-solid-bg" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+              </svg>
+          </button>
+          <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
+            <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
+              <li>
+                <a th:href="@{/patients}" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent" aria-current="page">Home</a>
+              </li>
+            
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <div class="w-full flex justify-center p-20">
+    
+        <div class="bg-blue-200 min-h-screen flex items-center w-full">
+            <div class="w-full">
+              <h2 class="text-center text-blue-400 font-bold text-2xl uppercase mb-10">Add Patient</h2>
+              <div class="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-1/2">
+                <form th:action="@{/patients}" th:object="${patient}" method="POST">
+                  <div class="mb-5">
+                    <label for="name" class="block mb-2 font-bold text-gray-600">Name</label>
+                    <input type="text" id="name"
+                    th:field="*{name}"
+                     name="name" placeholder="Put in  fullname." class="border border-gray-300 shadow p-3 w-full rounded mb-">
+                  </div>
+         
+                  <div class="mb-5">
+                    <label for="twitter" class="block mb-2 font-bold text-gray-600">Phone Number</label>
+                    <input type="text" 
+                    th:field="*{phoneNumber}"
+                    name="phoneNumber" placeholder="Put in phone number." class="border  shadow p-3 w-full rounded mb-">
+    
+                  </div>
+
+                  <div class="mb-5">
+                    <label for="twitter" class="block mb-2 font-bold text-gray-600">Status</label>
+                    <input type="text" id="status" name="status" 
+                    th:field="*{status}"
+                    placeholder="Put in status." class="border  shadow p-3 w-full rounded mb-">
+        
+                  </div>
+
+         
+                  <button type="submit" class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+    </div>
+  
+</body>
+</html>

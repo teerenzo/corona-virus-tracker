@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Item List</title>
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+
+<nav class="border-gray-200 bg-gray-800 dark:border-gray-700">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="#" class="flex items-center">
+         
+          <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">Corona virus Tracker</span>
+      </a>
+      <button data-collapse-toggle="navbar-solid-bg" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-solid-bg" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+          </svg>
+      </button>
+      <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
+        <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
+          <li>
+            <a href="#" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent" aria-current="page">Home</a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </nav>
+ <br>
+
+    <div class="mx-10 relative overflow-x-auto shadow-md sm:rounded-lg mt-10">
+        <a  class=" px-10 py-2 mb-4 text-white  bg-blue-400 rounded" th:href="@{/patients/new}" >Create</a>
+
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+         
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                       #
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Names
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        PhoneNumber
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        case(s)
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        status
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700" th:each="item : ${items}">
+                    <td class="px-6 py-4" th:text="${item.getId()}"></td>
+                    <td class="px-6 py-4" th:text="${item.getName()}"></td>
+                    <td class="px-6 py-4" th:text="${item.getPhoneNumber()}"></td>
+                    <td class="px-6 py-4" th:text="${item.getCases()}"></td>
+                    <td class="px-6 py-4" th:text="${item.getStatus()}"></td>
+                    <td class="px-6 py-4">
+                        <a th:href="@{/patients/{id}/edit(id=${item.getId()})}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                        <a th:href="@{/patients/{id}/delete(id=${item.getId()})}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline pl-5">Delete</a>
+                    </td>
+                </tr>
+            
+              
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>
